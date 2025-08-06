@@ -90,7 +90,7 @@ export async function POST(request: Request) {
             {
                 success: true,
                 message:
-                    "User SignedUp successfully.\nKindly verify your email",
+                    "User SignedUp successfully, Kindly verify your email",
             },
             { status: 201 }
         );

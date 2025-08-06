@@ -11,11 +11,14 @@ export async function sendVerificationEmail(
     
     try {
         const { data, error } = await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "Acme <onboarding@resend.dev>",
             to: email,
             subject: "Your PingMe Verification Code",
             react: VerificationEmail({username, otp: verifyCode}),
         });
+
+        // console.log("Resend response data:", data);
+        // console.log("Resend response error:", error);
 
         return {
             success: true,
