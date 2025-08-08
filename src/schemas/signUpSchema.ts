@@ -1,5 +1,5 @@
 import z from "zod";
-import { usernameValidation } from "./Validations.js";
+import { usernameValidation } from "./Validations.ts";
 
 
 export const signUpSchema = z.object({
