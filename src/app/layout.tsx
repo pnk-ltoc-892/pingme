@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/context/AuthProvider.tsx";
 import { Toaster } from "@/components/ui/sonner.tsx";
+import NavigationBar from "@/components/NavigationBar.tsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <NavigationBar />
           {children}
           <Toaster />
         </body>
