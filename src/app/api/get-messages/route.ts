@@ -32,7 +32,7 @@ export async function GET(request: Request) {
                 $match: {_id: userId}
             },
             {
-                $unwind: "messages"
+                $unwind: "$messages"
             },
             {
                 $sort: {"messages.createdAt": -1}

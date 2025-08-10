@@ -115,13 +115,18 @@ const UserDashboard = () => {
 
 
     // session.user => Do it optionally => session?.user
-    const { username } = session?.user as User;
+    const user = session?.user as User;
 
-    const baseUrl = `${window.location.protocol}//${window.location.host}`;
-    const profileUrl = `${baseUrl}/u/${username}`;
+    const [baseURL, setBaseURL] = useState("")
+    const [profileURL, setProfileURL] = useState("")
+    
+    useEffect(() => {
+        setBaseURL(`${window.location.protocol}//${window.location.host}`)
+        setProfileURL(`${baseURL}/u/${user?.username || ""}`)
+    }, [user?.username]);
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(profileUrl);
+        navigator.clipboard.writeText(profileURL);
         toast('URL Copied!', {
             description: 'Profile URL has been copied to clipboard.',
         });
@@ -130,7 +135,6 @@ const UserDashboard = () => {
     if (!session || !session.user) {
         return <div></div>;
     }
-
 
     return (
         <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
@@ -141,7 +145,7 @@ const UserDashboard = () => {
                 <div className="flex items-center">
                     <input
                         type="text"
-                        value={profileUrl}
+                        value={profileURL}
                         disabled
                         className="input input-bordered w-full p-2 mr-2"
                     />
